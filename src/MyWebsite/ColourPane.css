@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.pane {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform 1s ease-in-out;
+}
+
+.white {
+  background-color: white;
+}
+
+.blue {
+  background-color: blue;
+  z-index: 1;
+  transform: translateY(100%);
+}
+
+.red {
+  background-color: red;
+  z-index: 2;
+  transform: translateY(100%);
+}
+
+.slide-up.blue {
+  transform: translateY(0%);
+}
+
+.slide-up.red {
+  transform: translateY(0%);
+}
+
+.hide {
+  display: none;
+}
