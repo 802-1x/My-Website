@@ -40,3 +40,14 @@
 .hide {
   display: none;
 }
+
+.welcome-text {
+  position: absolute;
+  right: 20%; /* Configuration  for adjusting welcome text y-axis */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  color: black;
+  font-weight: bold;
+  z-index: 3;
+}
