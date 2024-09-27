@@ -1,4 +1,4 @@
-.left-container {
+.left-welcomeContainer {
   display: flex;
   width: 50%;
   height: 100vh;
@@ -46,4 +46,16 @@
   color: black;
   font-weight: bold;
   z-index: 3;
+  animation: fadeInUp 0.85s forwards; /*Timing is to align with the left pane transitioning up. */
+}
+
+@keyframes fadeInUp {
+  from {
+      transform: translateY(120px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(-50%);
+      opacity: 1;
+  }
 }

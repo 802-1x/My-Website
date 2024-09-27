@@ -1,0 +1,66 @@
+/* This section is for the background pane on the right of the screen. */
+
+.right-menuContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #1a1a1a;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+}
+
+/* This section is for the video content on the left of the screen. */
+
+.video-container {
+    display: flex;
+}
+
+.video-container video {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    position: absolute;
+    z-index: 1;
+}
+
+/* This section is for the menu bar options on the right of the screen. */
+
+.bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    width: 670px;
+    height: 90px;
+    border-radius: 10px 0px 0px 10px;
+    font-size: 2rem;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    right: 0;
+}
+
+.light-blue {
+    background-color: plum;
+    top: 24vh;
+}
+
+.yellow {
+    background-color: lightskyblue;
+    top: 38vh;
+}
+
+.beige {
+    background-color: darkorange;
+    top: 52vh;
+}
+
+.dark-orange {
+    background-color: lightgreen;
+    top: 66vh;
+}

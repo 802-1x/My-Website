@@ -20,7 +20,6 @@ const WelcomeAnimation = ({ onComplete }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  // 
   useEffect(() => {
     if (slideFirstSlide) {
       const timer = setTimeout(() => {
@@ -51,7 +50,7 @@ const WelcomeAnimation = ({ onComplete }) => {
 
   return (
     <>
-      <div className="left-container">
+      <div className="left-welcomeContainer">
         <div className={`pane white ${showFirstSlide ? 'hide' : ''}`}></div>
         <div className={`pane firstSlide ${slideFirstSlide ? 'slide-up' : ''} ${showFirstSlide ? '' : 'hide'}`}></div>
         <div className={`pane secondSlide ${slideSecondSlide ? 'slide-up' : ''}`}></div>
