@@ -46,7 +46,7 @@
   color: black;
   font-weight: bold;
   z-index: 3;
-  animation: fadeInUp 0.85s forwards; /*Timing is to align with the left pane transitioning up. */
+  animation: fadeInUp 0.7s forwards; /*Timing is to align with the left pane transitioning up. */
 }
 
 @keyframes fadeInUp {

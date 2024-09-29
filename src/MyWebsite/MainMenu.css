@@ -13,6 +13,7 @@
 }
 
 /* This section is for the video content on the left of the screen. */
+/* .video-container video is called from within MainMenuSelfHostedVideo.js, which is being triggered from SelfHostedVideo in MainMenu.js. */
 
 .video-container {
     display: flex;
@@ -27,40 +28,115 @@
     z-index: 1;
 }
 
-/* This section is for the menu bar options on the right of the screen. */
+/* Greeting text top right of the screen. */
+
+.greeting-text {
+    position: absolute;
+    top: 60px;
+    left: 75%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    z-index: 4;
+    width: max-content;
+}
+
+.greeting-text h1 {
+    font-size: 46px;
+    margin: 0;
+    padding: 0;
+}
+
+.greeting-myname p {
+    font-size: 22px;
+    margin: 5px 0 0 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.greeting-blurb p {
+    font-size: 14px;
+    margin: 5px 0 0 0;
+    padding: 0;
+    max-width: 600px;
+    white-space: normal;
+}
+
+.pronounce-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.pronounce-button:hover {
+    opacity: 0.8;
+}
+
+/* This section is for the menu bar options on the right of the screen.
+Invisible overlays are required to prevent the hovering effect flickering issue. */
 
 .bar {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     position: absolute;
     color: white;
-    width: 670px;
+    width: 650px;
     height: 90px;
     border-radius: 10px 0px 0px 10px;
     font-size: 2rem;
     font-family: Arial, sans-serif;
     overflow: hidden;
     right: 0;
+    transition: width 0.3s ease;
+    padding-left: 20px;
 }
 
-.light-blue {
-    background-color: plum;
-    top: 24vh;
+.bar.shrink {
+    width:620px;
 }
 
-.yellow {
-    background-color: lightskyblue;
+.invisible-overlay {
+    position: absolute;
+    right: 0;
+    width: 670px;
+    height: 90px;
+    z-index: 2;
+}
+
+.bar.plum, .invisible-overlay.plum {
     top: 38vh;
 }
 
-.beige {
-    background-color: darkorange;
+.bar.lightskyblue, .invisible-overlay.lightskyblue {
     top: 52vh;
 }
 
-.dark-orange {
-    background-color: lightgreen;
+.bar.darkorange, .invisible-overlay.darkorange {
     top: 66vh;
+}
+
+.bar.lightgreen, .invisible-overlay.lightgreen {
+    top: 80vh;
+}
+
+.bar.plum {
+    background-color: plum;
+}
+
+.bar.lightskyblue {
+    background-color: lightskyblue;
+}
+
+.bar.darkorange {
+    background-color: orange;
+}
+
+.bar.lightgreen {
+    background-color: lightgreen;
 }
