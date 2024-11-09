@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "sourceMap": true,
+      "strictNullChecks": true,
+      "module": "esnext",
+      "jsx": "react",
+      "target": "es6",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true
+    },
+    "include": [
+      "./src/"
+    ]
+  }

@@ -3,21 +3,26 @@ import './MainMenu.css';
 import SelfHostedVideo from './MainMenuSelfHostedVideo';
 import personalData from './inputs/personalData.json';
 
-/* Ensure file names matches file located in public directory. */
+/* Ensure file names matches files located in public directory. */
 const videoSrc = "/MainMenuVideo.mp4";
 const audioSrc="/NamePronounciation.mp3";
 
-const menuItems = [
+interface MenuItem {
+    text: string;
+    className: string;
+}
+
+const menuItems: MenuItem[] = [
     { text: "About", className: "plum" },
     { text: "Academic Essays", className: "lightskyblue" },
     { text: "Stub", className: "darkorange" },
     { text: "Socials", className: "lightgreen" },
 ];
 
-const MainMenu = () => {
-    const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const audioRef = useRef(null);
+const MainMenu: React.FC = () => {
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -27,16 +32,18 @@ const MainMenu = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    const handleMouseEnter = (index) => {
+    const handleMouseEnter = (index: number) => {
         setHoveredIndex(index);
     };
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = (): void => {
         setHoveredIndex(null);
     };
 
     const playAudio = () => {
-        audioRef.current.play();
+        if (audioRef.current) {
+            audioRef.current.play();
+        }
     }
 
     return (

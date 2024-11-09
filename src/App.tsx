@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import WelcomeAnimation from './MyWebsite/WelcomeAnimation';
 import MainMenu from './MyWebsite/MainMenu';
 
-function App() {
+const App: React.FC = () => {
   const [showWelcomeAnimation, setShowWelcomeAnimation] = useState(true);
 
-  const handleWelcomeComplete = () => {
+  const handleWelcomeComplete = (): void => {
     setShowWelcomeAnimation(false);
   };
 
