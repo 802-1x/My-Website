@@ -140,3 +140,14 @@ Invisible overlays are required to prevent the hovering effect flickering issue.
 .bar.lightgreen {
     background-color: lightgreen;
 }
+
+/* Welcome Animation to Main Menu fade in effects */
+
+.main-menu {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.main-menu.fade-in {
+    opacity: 1;
+}

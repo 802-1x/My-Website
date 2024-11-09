@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './MainMenu.css';
 import SelfHostedVideo from './MainMenuSelfHostedVideo';
 import personalData from './inputs/personalData.json';
@@ -16,8 +16,16 @@ const menuItems = [
 
 const MainMenu = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
-
+    const [isVisible, setIsVisible] = useState(false);
     const audioRef = useRef(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, 0);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleMouseEnter = (index) => {
         setHoveredIndex(index);
@@ -31,23 +39,23 @@ const MainMenu = () => {
         audioRef.current.play();
     }
 
-return (
-        <>
+    return (
+        <div className={`main-menu ${isVisible ? 'fade-in' : ''}`}>
             <div className="video-container">
                 <SelfHostedVideo videoSrc={videoSrc} />
             </div>
 
             <div className="right-menuContainer">
-                    <div className="greeting-text">
-                        <h1>Hello!</h1>
-                        <div className="greeting-myname">
-                            <p>My name is <button onClick={playAudio} className="pronounce-button">🔊</button> {personalData.name}</p>
-                        </div>
-                        <audio ref={audioRef} src={audioSrc}></audio>
-                        <div className="greeting-blurb">
-                            <p>{personalData.blurb}</p>
-                        </div>
+                <div className="greeting-text">
+                    <h1>Hello!</h1>
+                    <div className="greeting-myname">
+                        <p>My name is<button onClick={playAudio} className="pronounce-button">🔊</button> {personalData.name}</p>
                     </div>
+                    <audio ref={audioRef} src={audioSrc}></audio>
+                    <div className="greeting-blurb">
+                        <p>{personalData.blurb}</p>
+                    </div>
+                </div>
 
                 {menuItems.map((item, index) => (
                     <React.Fragment key={index}>
@@ -64,7 +72,7 @@ return (
                     </React.Fragment>
                 ))}
             </div>
-        </>
+        </div>
     );
 }
 
