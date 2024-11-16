@@ -7,7 +7,7 @@
       "jsx": "react",
       "target": "es6",
       "allowJs": true,
-      "moduleResolution": "node",
+      "moduleResolution": "bundler", /* bundler required for react-social-icons/component. Not needed without /component. */
       "resolveJsonModule": true,
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,

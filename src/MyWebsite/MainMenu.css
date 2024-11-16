@@ -45,6 +45,7 @@
     font-size: 46px;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .greeting-myname p {
@@ -150,4 +151,27 @@ Invisible overlays are required to prevent the hovering effect flickering issue.
 
 .main-menu.fade-in {
     opacity: 1;
+}
+
+/* Social media icon positionings */
+
+.linkedin-container {
+    position: absolute;
+    bottom: 7px;
+    right: 100px;
+    z-index: 4;
+}
+
+.github-container {
+    position: absolute;
+    bottom: 7px;
+    right: 150px;
+    z-index: 4;
+}
+
+.mailto-container {
+    position: absolute;
+    bottom: 7px;
+    right: 200px;
+    z-index: 4;
 }

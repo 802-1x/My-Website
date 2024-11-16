@@ -1,9 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './MainMenu.css';
+
+// External libraries; implementing code splitting and tree shaking to reduce size of bundled code
+import { SocialIcon } from 'react-social-icons/component';
+import 'react-social-icons/linkedin';
+import 'react-social-icons/github';
+import 'react-social-icons/mailto';
+
+// Internal components and data imports
 import SelfHostedVideo from './MainMenuSelfHostedVideo';
 import personalData from './inputs/personalData.json';
+import OpenPGPPublicKeys from './OpenPGPPublicKeys';
+import OpenPGPPublicKeysButtonOverlay from './OpenPGPPublicKeysButtonOverlay';
 
-/* Ensure file names matches files located in public directory. */
+
+// Ensure file names matches files located in public directory
 const videoSrc = "/MainMenuVideo.mp4";
 const audioSrc="/NamePronounciation.mp3";
 
@@ -12,16 +23,25 @@ interface MenuItem {
     className: string;
 }
 
+interface personalData {
+    name: string;
+    blurb: string;
+    linkedin: string;
+    github: string;
+    mailto: string;
+}
+
 const menuItems: MenuItem[] = [
     { text: "About", className: "plum" },
-    { text: "Academic Essays", className: "lightskyblue" },
-    { text: "Stub", className: "darkorange" },
-    { text: "Socials", className: "lightgreen" },
+    { text: "Writings", className: "lightskyblue" },
+    { text: "Projects", className: "darkorange" },
+    { text: "Professional", className: "lightgreen" },
 ];
 
 const MainMenu: React.FC = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [isVisible, setIsVisible] = useState<boolean>(false);
+    const [isOpenPGPPublicKeysButtonOverlayVisible, setIsOpenPGPPublicKeysButtonOverlayVisible] = useState<boolean>(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
@@ -44,6 +64,14 @@ const MainMenu: React.FC = () => {
         if (audioRef.current) {
             audioRef.current.play();
         }
+    }
+
+    const handleButtonClick = () => {
+        setIsOpenPGPPublicKeysButtonOverlayVisible(true);
+    }
+
+    const closeOverlay = () => {
+        setIsOpenPGPPublicKeysButtonOverlayVisible(false);
     }
 
     return (
@@ -78,6 +106,29 @@ const MainMenu: React.FC = () => {
                         ></div>
                     </React.Fragment>
                 ))}
+                <OpenPGPPublicKeys onClick={handleButtonClick} />
+                
+                <div className="linkedin-container">
+                    <SocialIcon url={personalData.linkedin} target="_blank" style={{ height: 40, width: 40 }} />
+                </div>
+                
+                <div className="github-container">
+                    <SocialIcon url={personalData.github} target="_blank" style={{ height: 40, width: 40 }} />
+                </div>
+
+                <div className="mailto-container">
+                    <SocialIcon url={personalData.mailto} target="_blank" style={{ height: 40, width: 40 }} />
+                </div>                
+
+                <OpenPGPPublicKeysButtonOverlay
+                    isVisible={isOpenPGPPublicKeysButtonOverlayVisible}
+                    onClose={closeOverlay}
+                    content={
+                        <>
+                            My <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy" target="_blank" rel="noopener noreferrer"> OpenPGP</a> Public Keys are available for download: <a href="/pk_placeholder.asc" download>Access Public Keys.</a>
+                        </>
+                    }
+                />
             </div>
         </div>
     );

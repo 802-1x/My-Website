@@ -22,7 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Media content under public
+# Customised content to ignore
 /public/MainMenuVideo.mp4
 /public/NamePronounciation.mp3
 /src/MyWebsite/inputs/
+/public/pk_placeholder.asc

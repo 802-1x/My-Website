@@ -1,0 +1,17 @@
+.openpgp-publickeys-button {
+    position: absolute;
+    bottom: 16px;
+    right: 15px;
+    padding: 2px 4px;
+    background-color: #f8ff94;
+    border: 2px solid #f8ff94;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.openpgp-publickeys-button:hover {
+    background-color: #bac246;
+    border: 2px solid #bac246;
+}
