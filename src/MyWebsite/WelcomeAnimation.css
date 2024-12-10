@@ -39,10 +39,10 @@
 
 .welcome-text {
   position: absolute;
-  right: 9%;
+  right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 92px;
+  font-size: 8vw;
   color: black;
   font-weight: bold;
   z-index: 3;
