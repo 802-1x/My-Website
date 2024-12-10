@@ -24,6 +24,7 @@ yarn-error.log*
 
 # Customised content to ignore
 /public/MainMenuVideo.mp4
+/public/MainMenuVideo.mp4.old
 /public/NamePronounciation.mp3
 /src/MyWebsite/inputs/
 /public/pk_placeholder.asc
