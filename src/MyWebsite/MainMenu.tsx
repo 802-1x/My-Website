@@ -43,7 +43,26 @@ const MainMenu: React.FC = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [isOpenPGPPublicKeysButtonOverlayVisible, setIsOpenPGPPublicKeysButtonOverlayVisible] = useState<boolean>(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [socialsIconSize, setSocialsIconSize] = useState(40);
 
+    // social media icon dynamic resizing
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 480) {
+                setSocialsIconSize(25);
+            } else if (window.innerWidth < 768) {
+                setSocialsIconSize(30);
+            } else {
+                setSocialsIconSize(40);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Main Menu appearance timing handling
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(true);
@@ -109,15 +128,15 @@ const MainMenu: React.FC = () => {
                 <OpenPGPPublicKeys onClick={handleButtonClick} />
                 
                 <div className="linkedin-container">
-                    <SocialIcon url={personalData.linkedin} target="_blank" style={{ height: 40, width: 40 }} />
+                    <SocialIcon url={personalData.linkedin} target="_blank" style={{ height: socialsIconSize, width: socialsIconSize }} />
                 </div>
                 
                 <div className="github-container">
-                    <SocialIcon url={personalData.github} target="_blank" style={{ height: 40, width: 40 }} />
+                    <SocialIcon url={personalData.github} target="_blank" style={{ height: socialsIconSize, width: socialsIconSize }} />
                 </div>
 
                 <div className="mailto-container">
-                    <SocialIcon url={personalData.mailto} target="_blank" style={{ height: 40, width: 40 }} />
+                    <SocialIcon url={personalData.mailto} target="_blank" style={{ height: socialsIconSize, width: socialsIconSize }} />
                 </div>                
 
                 <OpenPGPPublicKeysButtonOverlay
